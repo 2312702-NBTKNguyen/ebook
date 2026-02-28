@@ -1,0 +1,19 @@
+# Core web framework (REST API)
+fastapi
+
+# Django framework (current backend)
+django
+
+# ASGI server để chạy ứng dụng FastAPI
+uvicorn[standard]
+
+# Đọc cấu hình từ biến môi trường/.env
+pydantic-settings
+
+# Hỗ trợ upload file (ebook cover, tài liệu...)
+python-multipart
+
+# Đọc biến môi trường từ file .env cho Django settings
+python-dotenv
+
+django-taggit
