@@ -17,3 +17,5 @@ python-multipart
 python-dotenv
 
 django-taggit
+
+django-rest-framework
