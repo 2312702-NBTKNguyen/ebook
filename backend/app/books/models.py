@@ -29,8 +29,8 @@ class Book(models.Model):
     title = models.CharField(max_length=255, null=False)
     slug = models.SlugField(max_length=255, unique=True, null=False)
     description = models.TextField(blank=True)
-    cover_image_url = models.URLField(blank=True)
-    file_url = models.URLField(blank=True, null=False)
+    cover_image = models.ImageField(upload_to='books/covers/', null=True, blank=True)
+    file = models.FileField(upload_to='books/files/')
 
     # Optional fields
     page_count = models.IntegerField(null=True, blank=True, default=0)

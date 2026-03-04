@@ -146,3 +146,9 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+# Đường dẫn trên URL (VD: http://127.0.0.1:8000/media/books/covers/anh.jpg)
+MEDIA_URL = '/media/'
+
+# Thư mục vật lý trên máy tính để lưu file
+MEDIA_ROOT = BASE_DIR / 'media'
