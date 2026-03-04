@@ -1,1 +1,1 @@
-"""Namespace cho phiên bản API v1."""
+# Namespace cho phiên bản API v1.

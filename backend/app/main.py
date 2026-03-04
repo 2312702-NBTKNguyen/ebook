@@ -1,1 +1,1 @@
-"""Điểm khởi tạo ứng dụng FastAPI (entrypoint chính của backend)."""
+# Điểm khởi tạo ứng dụng FastAPI (entrypoint chính của backend).

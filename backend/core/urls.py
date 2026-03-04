@@ -19,5 +19,11 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('app/books/', include('app.books.urls')),
+    path("api/v1/", include('app.api.v1.router')),
+
+    # API Đăng nhập: Trả về Access Token và Refresh Token
+    # path('app/users/', include('app.users.urls')),
+
+    # API Xin cấp lại token mới khi token cũ hết hạn
+    # path('app/books/', include('app.books.urls')),
 ]
