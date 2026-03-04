@@ -46,12 +46,15 @@ INSTALLED_APPS = [
     # Third-party apps
     'taggit',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,8 +150,12 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-# Đường dẫn trên URL (VD: http://127.0.0.1:8000/media/books/covers/anh.jpg)
+# Đường dẫn trên URL
 MEDIA_URL = '/media/'
-
-# Thư mục vật lý trên máy tính để lưu file
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Cấu hình CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]

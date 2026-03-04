@@ -32,7 +32,6 @@ env/
 
 # Django / backend artifacts
 backend/media/
-backend/staticfiles/
 
 # Node / frontend artifacts
 node_modules/
