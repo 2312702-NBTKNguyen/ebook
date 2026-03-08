@@ -1,0 +1,9 @@
+import Navbar from "@/components/common/Navbar";
+
+export default function HomePage() {
+  return (
+    <div>
+      <h1>Trang chủ</h1>
+    </div>
+  );
+}
