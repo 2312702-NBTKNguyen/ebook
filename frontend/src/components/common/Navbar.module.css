@@ -19,7 +19,7 @@
     border-bottom: 1px solid var(--navbar-border);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 50;
     transition: all 0.3s ease;
     font-family: system-ui, -apple-system, sans-serif;
 }
@@ -45,13 +45,15 @@
 }
 
 .searchContainer {
+  --search-btn-padding: 0.2rem;
+  --search-btn-radius: 0.35rem;
     position: relative;
     flex: 1;
     display: flex;
     align-items: center;
     background-color: var(--nav-muted-bg);
     border: 1px solid var(--navbar-border);
-    border-radius: 0.6rem;
+  border-radius: calc(var(--search-btn-radius) + var(--search-btn-padding));
     overflow: hidden;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -72,14 +74,16 @@
 
 .searchInput {
     width: 100%;
-    padding: 0.6rem 0.75rem 0.6rem 2.5rem;
+    padding: 0.5rem 0.75rem 0.5rem 2.5rem;
     border-radius: 0;
     border: none;
     background-color: transparent;
     color: var(--navbar-text);
-    font-size: 0.875rem;
+    font-size: 1rem;
     outline: none;
     transition: none;
+    line-height: 1.5; 
+    font-family: inherit;
 }
 
 .searchInput::placeholder {
@@ -99,14 +103,56 @@
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: calc(0.6rem - 2px);
-  padding: 0.45rem 1.5rem;
+  border-radius: var(--search-btn-radius);
+  padding: 0.55rem 2rem;
   cursor: pointer;
   transition: background-color 0.2s;
   flex-shrink: 0;
-  margin: 0.1rem 0.1rem 0.1rem 0;
+  margin: var(--search-btn-padding);
 }
 
 .searchBtn:hover {
   background-color: var(--primary-hover);
+}
+
+.authSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.registerBtn {
+  background: transparent;
+  border: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.6rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.registerBtn:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.loginBtn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.loginBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+.loginBtn:active {
+  transform: scale(0.97);
 }
