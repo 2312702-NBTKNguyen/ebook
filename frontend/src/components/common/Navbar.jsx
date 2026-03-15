@@ -7,24 +7,45 @@ import { useContext, useEffect, useState, useSyncExternalStore } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
 
 import styles from "./Navbar.module.css";
-import { Search, Bell, CircleUser } from "lucide-react";
+import { Search, CircleUser } from "lucide-react";
 
+const categories = [
+  {
+    name: "Văn học",
+    subcategories: ["Tiểu thuyết", "Truyện ngắn", "Tác phẩm kinh điển", "Light Novel", "Trinh thám", "Ngôn tình", "Kiếm hiệp",
+      "Thơ ca - Tục ngữ - Ca dao - Thành ngữ", "Chiến tranh - Lịch sử", "Hồi ký - Bút ký", "Phóng sự - Ký sự - Phê bình văn học",
+      "Khoa học viễn tưởng", "Huyền bí - Giả tưởng - Kinh dị"
+    ],
+  },
+  {
+      name: "Kinh tế",
+      subcategories: ["Quản trị kinh doanh", "Marketing - Bán hàng", "Kinh tế học", "Tài chính - Ngân hàng", "Khởi nghiệp - làm giàu",
+        "Đầu tư - Chứng khoán", "Bất động sản", "Kinh doanh quốc tế", "Kế toán - Kiểm toán - Thuế"
+      ]
+  },
+  {
+      name: "Kỹ năng sống",
+      subcategories: ["Kỹ năng sống", "Tâm lý", "Tuổi mới lớn", "Hạt giống tâm hồn", "Rèn luyện nhân cách"]
+  }
+]
+
+const FLAG_VERSION = "20260215";
 const languages = [
   {
     code: "vi",
     label: "Tiếng Việt",
-    flagSrc: "/flags/vn.svg",
+    flagSrc: `/flags/vn.svg?v=${FLAG_VERSION}`,
     flagAlt: "Vietnam flag",
-    flagWidth: 20,
-    flagHeight: 13,
+    flagWidth: 80,
+    flagHeight: 60,
   },
   {
     code: "en",
     label: "English",
-    flagSrc: "/flags/gb.svg",
+    flagSrc: `/flags/gb.svg?v=${FLAG_VERSION}`,
     flagAlt: "United Kingdom flag",
-    flagWidth: 20,
-    flagHeight: 18,
+    flagWidth: 50,
+    flagHeight: 30,
   },
 ];
 
@@ -85,7 +106,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Link href="/" className={styles.logo}>
-        <span>EBOOK</span>
+        <span>NHÀ SÁCH EBOOK</span>
       </Link>
       {/* Middle Section (Danh mục + Tìm kiếm) */}
       <div className={styles.middle}>
@@ -94,7 +115,7 @@ export default function Navbar() {
           <Search className={styles.searchIcon} />
           <input
             type="text"
-            placeholder="Tìm kiếm tên sách, tác giả, thể loại..."
+            placeholder="Tìm kiếm tên sách, tác giả,..."
             className={styles.searchInput}
           />
           <button className={styles.searchBtn} aria-label="Tìm kiếm">
@@ -104,10 +125,7 @@ export default function Navbar() {
       </div>
       {/* Right Section (Đăng nhập/Đăng ký hoặc Thông tin người dùng) */}
       <div className={styles.right}>
-        <button className={styles.notificationBtn} aria-label="Thông báo">
-          <Bell />
-        </button>
-
+        {/* Tai khoản */}
         <div
           className={styles.accountWrapper}
           onMouseEnter={() => setIsAccountOpen(true)}
@@ -176,6 +194,7 @@ export default function Navbar() {
           )}
         </div>
 
+        {/* Chọn ngôn ngữ */}
         <div
           className={styles.languageWrapper}
           onMouseEnter={() => setIsLanguageOpen(true)}
@@ -196,11 +215,12 @@ export default function Navbar() {
               height={currentLanguage.flagHeight}
               priority={false}
             />
-            <span>{currentLanguage.label}</span>
+            <span className={styles.languageLabel}>{currentLanguage.label}</span>
           </button>
 
           {isLanguageOpen && (
             <div className={styles.languageSelector} role="menu">
+              <p className={styles.languageTitle}>Chọn ngôn ngữ</p>
               {languages.map((lang) => (
                 <button
                   key={lang.code}
